@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <ng-container *ngFor="let item of paises">
+            <section class="col-md-3 m-1">
+                <img [src]="[item.images]" alt="Paises" class="img-fluid">
+                <h6>{{item.nombre_pais}}</h6>
+                <div class="parrafo">
+                    <span>Population: </span> {{item.poblation}}
+                    <span>Region: </span> {{item.region}}
+                    <span>Capital: </span> {{item.capital}}
+                </div>
+            </section>
+        </ng-container>
+    </div>
+</div>
