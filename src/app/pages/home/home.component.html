@@ -1,15 +1,42 @@
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <ng-container *ngFor="let item of paises">
-            <section class="col-md-3 m-1">
-                <img [src]="[item.images]" alt="Paises" class="img-fluid">
-                <h6>{{item.nombre_pais}}</h6>
-                <div class="parrafo">
-                    <span>Population: </span> {{item.poblation}}
-                    <span>Region: </span> {{item.region}}
-                    <span>Capital: </span> {{item.capital}}
-                </div>
-            </section>
-        </ng-container>
+<app-navbar></app-navbar>
+
+<section>
+    <div class="container-search">
+        <label class="search" for="buscarPais">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" (keyup)="searchPaises($event)" #input placeholder="Search for a country ..."
+                id="buscarPais">
+        </label>
+
+        <div ngbDropdown class="d-inline-block dropdown">
+            <button class="btn" id="dropdownBasic1" ngbDropdownToggle>Filter by Region</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem>All</button>
+                <button ngbDropdownItem>Africa</button>
+                <button ngbDropdownItem>Americas</button>
+                <button ngbDropdownItem>Asia</button>
+                <button ngbDropdownItem>Europe</button>
+                <button ngbDropdownItem>Oceania</button>
+            </div>
+        </div>
     </div>
+</section>
+
+<div class="container-card">
+    <ng-container *ngIf="loading">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </ng-container>
+
+    <ng-container *ngFor="let item of paises  | searchPais:buscarPais">
+        <div class="cards" [routerLink]="[item.numericCode]">
+            <img [src]="[item.flag]" alt="Paises">
+            <div class="cards-body">
+                <h3>{{item.name}}</h3>
+                <p><span>Population: </span> {{item.population}}</p>
+                <p><span>Region: </span> {{item.region}}</p>
+                <p><span>Capital: </span> {{item.capital}}</p>
+            </div>
+        </div>
+    </ng-container>
 </div>
