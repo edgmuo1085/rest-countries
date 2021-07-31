@@ -25,9 +25,6 @@ export class PaisesService {
 	}
 
 	setPaises = (data: Paises[]): void => {
-		//console.log(data);
-		
-
 		localStorage.setItem("data_paises", JSON.stringify(data));
 	}
 }

@@ -11,32 +11,31 @@
         <div ngbDropdown class="d-inline-block dropdown">
             <button class="btn" id="dropdownBasic1" ngbDropdownToggle>Filter by Region</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>All</button>
-                <button ngbDropdownItem>Africa</button>
-                <button ngbDropdownItem>Americas</button>
-                <button ngbDropdownItem>Asia</button>
-                <button ngbDropdownItem>Europe</button>
-                <button ngbDropdownItem>Oceania</button>
+                <button ngbDropdownItem *ngFor="let regionP of regiones" (click)="buscarRegiones(regionP)">{{ regionP }}</button>
             </div>
         </div>
     </div>
 </section>
 
-<div class="container-card">
-    <ng-container *ngIf="loading">
+<ng-container *ngIf="loading">
+    <div class="center">
         <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
         <span class="sr-only">Loading...</span>
-    </ng-container>
+    </div>
+</ng-container>
+<div class="container-card">
 
     <ng-container *ngFor="let item of paises  | searchPais:buscarPais">
         <div class="cards" [routerLink]="[item.numericCode]">
             <img [src]="[item.flag]" alt="Paises">
             <div class="cards-body">
-                <h3>{{item.name}}</h3>
-                <p><span>Population: </span> {{item.population}}</p>
-                <p><span>Region: </span> {{item.region}}</p>
-                <p><span>Capital: </span> {{item.capital}}</p>
+                <h3>{{ item.name }}</h3>
+                <p><span>Population: </span> {{ item.population | number }}</p>
+                <p><span>Region: </span> {{ item.region }}</p>
+                <p><span>Capital: </span> {{ item.capital }}</p>
             </div>
         </div>
     </ng-container>
 </div>
+
+<app-footer></app-footer>

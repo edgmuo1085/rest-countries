@@ -1,5 +1,49 @@
 <app-navbar></app-navbar>
 
-<div class="container-item">
+<div class="container-button">
     <button class="btn" [routerLink]="['/home']"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atrás</button>
 </div>
+
+<div class="container-pais">
+
+    <section class="img-pais">
+        <img [src]=[dataPais?.flag] alt="Pais" class="img-fluid">
+    </section>
+    <section class="data-pais">
+        <h3>{{ dataPais?.name }}</h3>
+        <div class="seccion">
+            <div>
+                <p><span>Native Name: </span> {{ dataPais?.nativeName }}</p>
+                <p><span>Population: </span> {{ dataPais?.population | number }}</p>
+                <p><span>Region: </span> {{ dataPais?.region }}</p>
+                <p><span>Sub Region: </span> {{ dataPais?.subregion }}</p>
+                <p><span>Capital: </span> {{ dataPais?.capital }}</p>
+            </div>
+            <div class="seccion-div">
+                <p><span>Top Level Domain: </span> {{ dataPais?.topLevelDomain[0] }}</p>
+                <p>
+                    <span>Currencies: </span>
+                    <ng-container *ngFor="let itemC of dataPais?.currencies">
+                        {{ itemC.name }}
+                    </ng-container>
+                </p>
+                <p>
+                    <span>Languages: </span>
+                    <ng-container *ngFor="let itemL of dataPais?.languages">
+                        {{ itemL.name }},
+                    </ng-container>
+                </p>
+            </div>
+        </div>
+        <div class="borders-countries">
+            <p>
+                <span>Border Countries: </span>
+                <ng-container *ngFor="let itemBC of dataPais?.borders">
+                    <button class="btn" type="button">{{ itemBC }}</button>
+                </ng-container>
+            </p>
+        </div>
+    </section>
+</div>
+
+<app-footer></app-footer>

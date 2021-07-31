@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PaisComponent } from './pages/home/pais/pais.component';
 import { SearchPaisPipe } from './shared/pipes/search-pais.pipe';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
 	declarations: [
@@ -16,7 +17,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 		HomeComponent,
 		PaisComponent,
 		SearchPaisPipe,
-		NavbarComponent
+		NavbarComponent,
+		FooterComponent
 	],
 	imports: [
 		BrowserModule,
