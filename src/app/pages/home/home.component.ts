@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 	buscarPais: string = '';
 	loading: boolean = true;
 	suscripcion!: Subscription;
-	regiones: Array<string> = ['Todas', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+	regiones: Array<string> = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 	constructor(private paisesServices: PaisesService) { }
 
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 	}
 
 	buscarRegiones = (region: string) => {
-		if (region == 'Todas') {
+		if (region == 'All') {
 			this.paises = [];
 			this.paises = this.paisesFiltros;
 		}
