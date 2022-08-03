@@ -1,4 +1,4 @@
 export const environment = {
-	production: false,
-	apiCountry: "https://restcountries.eu/rest/v2/"
+  production: false,
+  apiCountry: 'https://restcountries.com/v3.1/',
 };
